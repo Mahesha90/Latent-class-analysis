@@ -17,7 +17,7 @@ plot(data.pca)
 #to find out the number of factors that we’ll be selecting for factor analysis.
 parallel<-fa.parallel(data, fm='minres', fa='fa')
 #Parallel analysis suggests that the number of factors =  4
-threefactor <- fa(data,nfactors = 3,rotate = "oblimin",fm="minres")
+threefactor <- fa(data,nfactors = 5,rotate = "oblimin",fm="minres")
 print(threefactor)
 print(threefactor$loadings,cutoff = 0.3, sort=TRUE)
 
@@ -74,6 +74,16 @@ library(cluster)    # clustering algorithms
 library(factoextra) # clustering visualization
 library(dendextend) # for comparing two dendrograms
 
-d <- dist(data, method = "euclidean")
-hc1 <- hclust(d, method = "complete" )
+dataClus <- read.delim(file.choose(),header = TRUE)
+#Dissimilarity matrix
+HC <- dist(dataClus[2:14], method = "euclidean")
+#Hierarchical clustering using wards method
+hc1 <- hclust(HC, method = "ward.D2" )
+#hc1 <- hclust(HC, method = "average" )
+#Plot the obtained dendrogram
 plot(hc1, cex = 0.6, hang = -1)
+##Plot the obtained dendrogram with Labels
+plot(hc1, cex = 0.6, labels = dataClus$Participant, hang = -1)
+#make subgroups
+plot(hc1, labels = dataClus$Participant, cex = 0.6)
+rect.hclust(hc1, k = 5, border = 2:5)
