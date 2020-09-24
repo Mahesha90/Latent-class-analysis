@@ -1,0 +1,14 @@
+SI	SC	PP	NHL	NMI	Finishdegree	GP	LowCompletion	LPjob	WI	TPSE	N_PopularS	NInterest	OTransfer	WSpeciality	E_Workload	FamilyI	FinancialI	HealthP	PandS	DifficulutCourse	LearningD	Employment	Thesis	Perfectionism	Checkwithteachers	Counseling	ICourses	Inform	Tracking	SupervisorC	Talk	SandCourses	SelfM	CD	GD	CantfigureSP	DifficultConvince	DifficultCont	LecturersLI	NPtakingActions	TooLate	WorkHours	TMIssues	OwnData	DoNotuseSIS	UseSIS	LiketoseeStudentD	PositiveImp	NagativeImp
+0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	1	0	0	1	0	0	0	0	0	0	0	0	0	1	2	0	1	0	1
+0	3	1	0	2	0	1	1	1	1	0	0	1	0	0	0	1	1	0	0	0	0	3	0	1	0	0	0	0	0	0	1	0	0	0	0	0	0	1	0	0	0	0	1	0	8	0	1	0	6
+0	0	0	1	0	0	0	2	0	1	0	0	0	0	1	0	1	0	0	1	0	1	1	0	0	0	0	0	3	1	1	2	0	0	0	0	0	0	0	0	0	1	0	1	0	0	2	1	1	0
+0	1	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	0	0	0	1	0	1	1	0	0	0	0	0	0	0	0	1	0	0	1	1	0	3	0	0	0	1	0	2
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	1	0	1	1	0	2	0	0	0	0	0	0	2	0	0	0	0	0	0
+0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0	1	2	0	0	0	0	0	0	0	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0	1	0	0	0	0	0	0	0	1	0	0	2	0	0	0	0	0	0	0	1	1	1	0	0	0	1	0	0	0	0	3	1	0	1	1	1	0	0	1	1	0	1	4	0	0	0	1	2	1
+1	0	0	0	0	0	0	1	0	0	1	0	0	1	1	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	2	1	3	0
+0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	1	1	0	3	0	1
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1
+0	0	0	0	0	0	0	0	0	0	0	1	0	1	3	0	0	0	0	0	0	2	0	0	0	0	0	2	0	0	0	2	1	0	1	0	1	2	0	0	0	0	0	3	1	1	0	3	3	1
+0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0

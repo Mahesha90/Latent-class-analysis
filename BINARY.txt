@@ -1,0 +1,14 @@
+SI	SC	PP	NHL	NMI	Finishdegree	GP	LowCompletion	LPjob	WI	TPSE	N_PopularS	NInterest	OTransfer	WSpeciality	EDropouts	E_Workload	FamilyI	FinancialI	HealthP	PandS	DifficulutCourse	LearningD	Middle	Employment	Thesis	Perfectionism	Final	Checkwithteachers	Counseling	ICourses	Inform	Tracking	SupervisorC	Talk	AStablished	SandCourses	SelfM	CD	GD	Suggested	CantfigureSP	DifficultConvince	DifficultCont	LecturersLI	NPtakingActions	TooLate	WorkHours	TMIssues
+1	1	1	2	1	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	1	2	1	1	1	1	1	1	2	2	1	1	2	1	2	1	1	1	1	1	1	1	1
+1	2	2	1	2	1	2	2	2	2	1	1	2	1	1	2	1	2	2	1	1	1	1	2	2	1	2	2	1	1	1	1	1	1	2	2	1	1	1	1	1	1	1	2	1	1	1	1	2
+1	1	1	2	1	1	1	2	1	2	1	1	1	1	2	2	1	2	1	1	2	1	2	2	2	1	1	2	1	1	1	2	2	2	2	2	1	1	1	1	1	1	1	1	1	1	2	1	2
+1	2	1	1	1	1	1	1	1	1	1	1	1	1	2	2	1	1	1	2	1	1	1	2	1	1	1	1	2	1	2	2	1	1	1	2	1	1	1	1	1	1	2	1	1	2	2	1	2
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	2	1	1	1	1	1	1	1	1	1	1	2	2	1	2	2	1	2	2	1	1	1	1	1	1	2
+1	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	1	2	1	2	2	2	1	2	1	1	1	1	1	1	2	2	2	2	2	1	2	1	1	1	1	1	1	1	1
+1	2	1	1	1	1	1	1	1	2	1	1	2	1	1	2	1	1	1	1	1	2	2	2	2	1	1	2	1	2	1	1	1	1	2	2	2	1	2	2	2	2	1	1	2	2	1	2	2
+2	1	1	1	1	1	1	2	1	1	2	1	1	2	2	2	1	1	1	1	1	1	1	1	1	2	1	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	1	1	1	2
+1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	1	1	1	2
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	1	1	1	1	1	2	1	1	1	1	1	1	1	1	1	1	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1
+1	1	1	1	1	1	1	1	1	1	1	2	1	2	2	2	1	1	1	1	1	1	2	2	1	1	1	2	1	1	2	1	1	1	2	2	2	1	2	1	2	2	2	1	1	1	1	1	2
+1	1	1	1	1	1	1	1	1	1	1	2	1	1	1	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
