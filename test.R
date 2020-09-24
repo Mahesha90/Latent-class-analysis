@@ -7,7 +7,7 @@ library(lattice)
 library(nFactors)
 library(psych)
 
-#--------------------Factor Analysis----------------------
+#--------------------Factor Analysis-----------------------
 data <- read.delim(file.choose(),header = TRUE)
 View(data)
 #PCA to identify number of factors
@@ -66,3 +66,14 @@ lca.lcca<-lcca::lca(
   flatten.rhos=1
 )
 summary.lca(lca.lcca, show.all=T)
+
+#-------------------Cluster Analysis-----------------
+
+library(tidyverse)  # data manipulation
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering visualization
+library(dendextend) # for comparing two dendrograms
+
+d <- dist(data, method = "euclidean")
+hc1 <- hclust(d, method = "complete" )
+plot(hc1, cex = 0.6, hang = -1)
