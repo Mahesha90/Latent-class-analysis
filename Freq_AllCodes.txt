@@ -1,0 +1,14 @@
+Participant	SocietalIssue	StudentChoice	PoliticalProblem	NotaHugeLoss	NotMuchImpact	Finishdegree	GetPromotedinCareer	LowCompletion	LowProbabilityinJob	WasteofInvestments	StudenttookSomeonesplace	N_PopularS	NInterest	OTransfer	WSpeciality	E_Workload	FamilyI	FinancialI	HealthP	Psyco_Social	DifficulutCourse	LearningD	Employment	Thesis	Perfectionism	Checkwithteachers	Counseling	ICourses	Inform	Tracking	SupervisorC	Talk	SandCourses	ImroveStudy_SelfM	CurriculumDevelopmnet	GroupDiscussions	CantfigureSP	DifficultConvince	DifficultCont	LecturersLI	NPtakingActions	TooLate	WorkHours	TMIssues	OwnData	DoNotuseSIS	UseSIS	LiketoseeStudentD	PositiveImp	NagativeImp
+SE1	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	1	0	0	1	0	0	0	0	0	0	0	0	0	1	2	0	1	0	1
+SE3	0	3	1	0	2	0	1	1	1	1	0	0	1	0	0	0	1	1	0	0	0	0	3	0	1	0	0	0	0	0	0	1	0	0	0	0	0	0	1	0	0	0	0	1	0	8	0	1	0	6
+Philosophy2	0	0	0	1	0	0	0	2	0	1	0	0	0	0	1	0	1	0	0	1	0	1	1	0	0	0	0	0	3	1	1	2	0	0	0	0	0	0	0	0	0	1	0	1	0	0	2	1	1	0
+Philosophy3	0	1	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	0	0	0	1	0	1	1	0	0	0	0	0	0	0	0	1	0	0	1	1	0	3	0	0	0	1	0	2
+Philosophy4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1
+Counselling1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	1	0	1	1	0	2	0	0	0	0	0	0	2	0	0	0	0	0	0
+Counselling2	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0	1	2	0	0	0	0	0	0	0	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Counselling3	0	1	0	0	0	0	0	0	0	1	0	0	2	0	0	0	0	0	0	0	1	1	1	0	0	0	1	0	0	0	0	3	1	0	1	1	1	0	0	1	1	0	1	4	0	0	0	1	2	1
+Romance2	1	0	0	0	0	0	0	1	0	0	1	0	0	1	1	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	2	1	3	0
+Romance3	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	1	1	0	3	0	1
+Romance4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1
+Pharmacy2	0	0	0	0	0	0	0	0	0	0	0	1	0	1	3	0	0	0	0	0	0	2	0	0	0	0	0	2	0	0	0	2	1	0	1	0	1	2	0	0	0	0	0	3	1	1	0	3	3	1
+Pharmacy3	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0
