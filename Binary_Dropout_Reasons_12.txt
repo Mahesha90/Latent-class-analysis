@@ -1,0 +1,14 @@
+Participant	SocietalIssue	StudentChoice	PoliticalProblem	NotaHugeLoss	NotMuchImpact	Finishdegree	GetPromotedinCareer	LowCompletion	LowProbabilityinJob	WasteofInvestments	StudenttookSomeonesplace	N_PopularS	NInterest	OTransfer	WSpeciality	E_Workload	FamilyI	FinancialI	HealthP	Psyco_Social	DifficulutCourse	LearningD	Employment	Thesis
+SE1	2	2	2	1	2	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	1	2
+SE3	2	1	1	2	1	2	1	1	1	1	2	2	1	2	2	2	1	1	2	2	2	2	1	2
+Philosophy2	2	2	2	1	2	2	2	1	2	1	2	2	2	2	1	2	1	2	2	1	2	1	1	2
+Philosophy3	2	1	2	2	2	2	2	2	2	2	2	2	2	2	1	2	2	2	1	2	2	2	2	2
+Philosophy4	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2
+Counselling1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	1	2	2	2
+Counselling2	2	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	1	2	2	1	2	1	1
+Counselling3	2	1	2	2	2	2	2	2	2	1	2	2	1	2	2	2	2	2	2	2	1	1	1	2
+Romance2	1	2	2	2	2	2	2	1	2	2	1	2	2	1	1	2	2	2	2	2	2	2	2	1
+Romance3	2	2	2	2	2	2	2	2	2	2	2	2	2	1	2	2	2	2	2	2	2	2	2	2
+Romance4	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	1	2	2	2	2	2	2	2	2
+Pharmacy2	2	2	2	2	2	2	2	2	2	2	2	1	2	1	1	2	2	2	2	2	2	1	2	2
+Pharmacy3	2	2	2	2	2	2	2	2	2	2	2	1	2	2	2	2	2	2	2	2	2	2	2	2
