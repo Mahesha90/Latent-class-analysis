@@ -1,5 +1,7 @@
 # Mystudy
-Binary.txt File used for Latent Class Analysis (This contains all the sub codes)
-Frequency.txt File used for Factor Analysis (This contains all the sub codes)
-DRBinary_Cluster.txt File used for hierarchical cluster analysis-dropout reasons and dropouts as a major concern (This contains codes of dropout reasons and dropouts as a major concern codes)
-SubCodes_Cluster.txt File used for hierarchical cluster analysis-All codes (This contains all the subcodes)
+Binary_AllCodes_12.txt: This file used for Latent Clas analysis (All Codes)
+Binary_Dropout_Reasons_12.txt: This file used for Latent Clas analysis 
+Binary_DropoutReasons_Clustering.txt: This file used for Hierarchical Clustering
+Binary_ALlCodes_Clustering.txt: This file used for Hierarchical Clustering (All Codes)
+Freq_AllCodes.txt: This file used for Factor Analysis (All Codes)
+Freq_Dropout_Reasons.txt: This file used for Factor Analysis 
