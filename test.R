@@ -156,28 +156,41 @@ results
 #calculate enthrophy
 poLCA.entropy(lc1)
 
+#Enthropy
+
+entropy<-function (p) sum(-p*log(p))
+
+results$R2_entropy
+results[1,8]<-c("-")
+
+error_prior<-entropy(lc2$P) # class proportions model 2
+error_post<-mean(apply(lc2$posterior,1, entropy),na.rm = TRUE)
+results[2,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc3$P) # class proportions model 3
+error_post<-mean(apply(lc3$posterior,1, entropy),na.rm = TRUE)
+results[3,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc4$P) # class proportions model 4
+error_post<-mean(apply(lc4$posterior,1, entropy),na.rm = TRUE)
+results[4,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc5$P) # class proportions model 5
+error_post<-mean(apply(lc5$posterior,1, entropy),na.rm = TRUE)
+results[5,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc6$P) # class proportions model 6
+error_post<-mean(apply(lc6$posterior,1, entropy),na.rm = TRUE)
+results[6,8]<-round(((error_prior-error_post) / error_prior),3)
+
+# combining results to a dataframe
+colnames(results)<-c("Model","log-likelihood","resid. df","BIC","aBIC","cAIC","likelihood-ratio","Entropy")
+lca_results<-results
+
+library(ztable)
+ztable::ztable(lca_results)
 #f<-with(data1, cbind(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	DoNotuseSIS,	UseSIS,	LiketoseeStudentD,	PositiveImp,	NagativeImp)~1) #
 
-max_II <- -100000
-min_bic <- 100000
-for(i in 2:10){
-  lc <- poLCA(f, data1, nclass=i, maxiter=3000, 
-              tol=1e-5, na.rm=FALSE,  
-              nrep=10, verbose=TRUE, calc.se=TRUE)
-  if(lc$bic < min_bic){
-    min_bic <- lc$bic
-    LCA_best_model<-lc
-  }
-}    	
-LCA_best_model
-
-lca.lcca<-lcca::lca(
-  cbind(SI,SC,PP,NHL, NMI,Finishdegree,GP,LowCompletion,LPjob,WI,TPSE,N_PopularS,NInterest,OTransfer,WSpeciality,EDropouts,E_Workload,FamilyI,FinancialI,HealthP,PandS,DifficulutCourse,LearningD,Middle,Employment,Thesis,Perfectionism,Final,Checkwithteachers,Counseling,ICourses,Inform,Tracking,SupervisorC,Talk,AStablished,SandCourses,SelfM,CD,GD,Suggested,CantfigureSP,DifficultConvince,DifficultCont,LecturersLI)~1,
-  nclass=2,
-  data=data1,
-  flatten.rhos=1
-)
-summary.lca(lca.lcca, show.all=T)
 
 #-------------------Cluster Analysis-----------------
 
