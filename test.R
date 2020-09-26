@@ -86,12 +86,27 @@ library("tidyr")
 library("knitr")
 dataAC <- read.delim(file.choose(),header = TRUE)
 #latent class analysis for all the codes
+
 ds <- poLCA(cbind(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	UseSIS,	PositiveImp)~1, data=dataAC, graphs = TRUE, na.rm = TRUE)
 #this suggest best fit model for 2 latent classes
+#Latent class analysis for dropout reasons
+ds <- poLCA(cbind(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis)~1, data=dataAC, graphs = TRUE, na.rm = TRUE)
+#for dropout reasons
 
+#---------------------------All Codes-------------------------------
+#Select variable for all codes
 mydata <- dataAC %>% dplyr::select(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	UseSIS,	PositiveImp)
+#Define Function for all codes
 f<-with(mydata, cbind(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	UseSIS,	PositiveImp)~1)
 
+#--------------------------Dropout Reasosn-----------------------------
+#Select variable for dropout rasons
+mydata <- dataAC %>% dplyr::select(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis)
+#define function for dropout reasons
+f<-with(mydata, cbind(SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis)~1)
+
+
+#models with different number of groups without covariates:
 set.seed(01012)
 lc1<-poLCA(f, data=mydata, nclass=1, na.rm = FALSE, nrep=30, maxiter=3000) #Loglinear independence model.
 lc2<-poLCA(f, data=mydata, nclass=2, na.rm = FALSE, nrep=30, maxiter=3000)
@@ -153,10 +168,8 @@ results[5,7]<-lc5$Gsq
 results[6,7]<-lc6$Gsq
 #print results
 results
-#calculate enthrophy
-poLCA.entropy(lc1)
 
-#Enthropy
+#Calculate Enthropy
 
 entropy<-function (p) sum(-p*log(p))
 
