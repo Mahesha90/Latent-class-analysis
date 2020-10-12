@@ -1,7 +1,7 @@
-install.packages("GPArotation")
-install.packages("nFactor")
-install.packages("psych")
-install.packages("lattice")
+#install.packages("GPArotation")
+#install.packages("nFactor")
+#install.packages("psych")
+#install.packages("lattice")
 library(GPArotation)
 library(lattice)
 library(nFactors)
@@ -12,6 +12,10 @@ library(dplyr)
 #This has done for both "All codes" and "DropoutReasons"
 data <- read.delim(file.choose(),header = TRUE)
 View(data)
+
+
+
+
 #CorrelationMatrix
 raqMatrix <- cor(data[2:49])
 
