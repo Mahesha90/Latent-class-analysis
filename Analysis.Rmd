@@ -3,6 +3,7 @@ title: "Program Director Interviews"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 Here, we present an analysis of the interviews with program directors, step by step.
@@ -86,30 +87,275 @@ below you can transfer the code from test.R. I've tried to adapt some
 # Factor Analysis for All codes
 
 This has done for both "All codes" and "DropoutReasons"
-question: what do you mean "for both"?
+question: what do you mean "for both"? 
+-All codes means all the codes derived from the analysis (e.g: dropouts is a major concern, dropout reasons, strategies, issues)
+Dropout reasosn contains the codes derived from (dropouts as a major concern and dropout reasosn ). Sicne those emhpasise the reasons for dropouts
+
+For the factor analysis I used Freq_AllCodes and Freq_Dropout_Reasons
+
 ```{r}
 #data <- read.delim(file.choose(),header = TRUE)
-data <-read.table("./Binary_AllCodes_12.txt", header = TRUE)
+data <-read.delim("./Freq_AllCodes.txt", header = TRUE)
 #View(data)
 ```
 
 #CorrelationMatrix
-question: these correlations do not take into account statistical significance, right?
+question: these correlations do not take into account statistical significance, right? Yes
 ```{r}
-raqMatrix <- cor(data[2:49])
+raqMatrix <- cor(data[2:50])
+
+head(round(raqMatrix, 2))
+```
+
+Based on the correlation matrix, heavily weighted (greater than 0.9) variables (negativeIM and liketo see student data) have been removed (like to see student data, do not use SIS and Negative Impression) after that PCA was calculated.
+
+
+question: Not sure whats going on here? If you un-comment and re-run, it gives an error
+
+Answer: chances are you have another package attached that also has a select function and R thinks you are calling that. Thus; I changed it as dplyr::select.  
+```{r}
+data <- dplyr::select(data, SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	UseSIS,	PositiveImp)
+
+raqMatrix <- cor(data)
 
 head(round(raqMatrix, 2))
 ```
 
 
-
-remove negativeIM and liketo see student data
-question: Not sure whats going on here? If you un-comment and re-run, it gives an error
+PCA to identify number of factors
 ```{r}
-#data <- select(data,SocietalIssue,	StudentChoice,	PoliticalProblem,	NotaHugeLoss,	NotMuchImpact,	Finishdegree,	GetPromotedinCareer,	LowCompletion,	LowProbabilityinJob,	WasteofInvestments,	StudenttookSomeonesplace,	N_PopularS,	NInterest,	OTransfer,	WSpeciality,	E_Workload,	FamilyI,	FinancialI,	HealthP,	Psyco_Social,	DifficulutCourse,	LearningD,	Employment,	Thesis,	Perfectionism,	Checkwithteachers,	Counseling,	ICourses,	Inform,	Tracking,	SupervisorC,	Talk,	SandCourses,	ImroveStudy_SelfM,	CurriculumDevelopmnet,	GroupDiscussions,	CantfigureSP,	DifficultConvince,	DifficultCont,	LecturersLI,	NPtakingActions,	TooLate,	WorkHours,	TMIssues,	OwnData,	UseSIS,	PositiveImp)
+data.pca <- prcomp(data)
+summary(data.pca)
+plot(data.pca)
+```
 
-#raqMatrix <- cor(data)
+I used Psych package’s fa.parallel function to execute the parallel analysis. The main goal of the parallel analysis is to find out the number of factors.
 
-#head(round(raqMatrix, 2))
+```{r warning=FALSE}
+parallel<-fa.parallel(data, fm='minres', fa='fa')
+```
+
+Parallel analysis suggests that the number of factors =  3  and the number of components =  NA . Further, based on the PCA also we can say, the ideal number of factors are 3. 
+
+library(nFactors)
+```{r warning=FALSE}
+threefactor <- fa(data,nfactors = 3,rotate = "oblimin",fm="minres")
+print(threefactor)
+print(threefactor$loadings,cutoff = 0.3, sort=TRUE)
+```
+
+#--------------------Factor Analysis for Dropout Reasons and Patterns-----------------------
+
+```{r}
+dataDR <-read.delim("./Freq_Dropout_Reasons.txt", header = TRUE)
+```
+
+CorrelationMatrix
+```{r}
+dataDR <- cor(dataDR[2:26])
+
+head(round(dataDR, 2))
+```
+
+PCA to identify number of factors
+```{r}
+dataDR.pca <- prcomp(dataDR)
+summary(data.pca)
+plot(data.pca)
+```
+
+Screeplot to find number of factors
+```{r}
+ev <- eigen(cor(dataDR)) # get eigenvalues
+ap <- parallel(subject=nrow(dataDR),var=ncol(dataDR),
+               rep=100,cent=.05)
+nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+plotnScree(nS)
+```
+
+based on PCA data 3 factors were executed
+```{r}
+threefactorDR <- fa(dataDR,nfactors = 3,rotate = "oblimin",fm="minres")
+print(threefactorDR)
+print(threefactorDR$loadings,cutoff = 0.3, sort=TRUE)
+```
+
+#-------------Latent Class Analysis------------------
+
+```{r}
+library(scatterplot3d)
+library(MASS)
+library(poLCA)
+library(xlsx)
+library("reshape2")
+library("plyr")
+library("dplyr")
+library("poLCA")
+library("ggplot2")
+library("ggparallel")
+library("igraph")
+library("tidyr")
+library("knitr")
+```
+
+Here as you mentioned I considered partipant statement as the unit of analysis
+```{r}
+dataLCA <-read.delim("./Binary_ALlCodes_Clustering.txt",header = TRUE)
+```
+
+latent class analysis for all the codes
+```{r}
+ds <- poLCA(cbind(SE1,	SE3,	Philosophy2,	Philosophy3,	Philosophy4,	Counselling1,	Counselling2,	Counselling3,	Romance2,	Romance3,	Romance4,	Pharmacy2,	Pharmacy3)~1, data=dataLCA, graphs = TRUE, na.rm = TRUE)
+```
+
+Select variable and define function for all codes
+```{r}
+mydata <- dataLCA %>% dplyr::select(SE1,	SE3,	Philosophy2,	Philosophy3,	Philosophy4,	Counselling1,	Counselling2,	Counselling3,	Romance2,	Romance3,	Romance4,	Pharmacy2,	Pharmacy3)
+
+f<-with(mydata, cbind(SE1,	SE3,	Philosophy2,	Philosophy3,	Philosophy4,	Counselling1,	Counselling2,	Counselling3,	Romance2,	Romance3,	Romance4,	Pharmacy2,	Pharmacy3)~1)
+```
+
+models with different number of groups
+
+```{r}
+set.seed(01012)
+lc1<-poLCA(f, data=mydata, nclass=1, na.rm = FALSE, nrep=30, maxiter=3000) #Loglinear independence model.
+lc2<-poLCA(f, data=mydata, nclass=2, na.rm = FALSE, nrep=30, maxiter=3000)
+lc3<-poLCA(f, data=mydata, nclass=3, na.rm = FALSE, nrep=30, maxiter=3000)
+lc4<-poLCA(f, data=mydata, nclass=4, na.rm = FALSE, nrep=30, maxiter=3000) 
+lc5<-poLCA(f, data=mydata, nclass=5, na.rm = FALSE, nrep=30, maxiter=3000)
+lc6<-poLCA(f, data=mydata, nclass=6, na.rm = FALSE, nrep=30, maxiter=3000)
+```
+
+generate dataframe with fit-values
+
+```{r}
+results <- data.frame(Modell=c("Modell 1"),
+                      log_likelihood=lc1$llik,
+                      df = lc1$resid.df,
+                      BIC=lc1$bic,
+                      ABIC=  (-2*lc1$llik) + ((log((lc1$N + 2)/24)) * lc1$npar),
+                      CAIC = (-2*lc1$llik) + lc1$npar * (1 + log(lc1$N)), 
+                      likelihood_ratio=lc1$Gsq)
+results$Modell<-as.integer(results$Modell)
+results[1,1]<-c("Modell 1")
+results[2,1]<-c("Modell 2")
+results[3,1]<-c("Modell 3")
+results[4,1]<-c("Modell 4")
+results[5,1]<-c("Modell 5")
+results[6,1]<-c("Modell 6")
+
+results[2,2]<-lc2$llik
+results[3,2]<-lc3$llik
+results[4,2]<-lc4$llik
+results[5,2]<-lc5$llik
+results[6,2]<-lc6$llik
+
+results[2,3]<-lc2$resid.df
+results[3,3]<-lc3$resid.df
+results[4,3]<-lc4$resid.df
+results[5,3]<-lc5$resid.df
+results[6,3]<-lc6$resid.df
+
+results[2,4]<-lc2$bic
+results[3,4]<-lc3$bic
+results[4,4]<-lc4$bic
+results[5,4]<-lc5$bic
+results[6,4]<-lc6$bic
+
+results[2,5]<-(-2*lc2$llik) + ((log((lc2$N + 2)/24)) * lc2$npar) #abic
+results[3,5]<-(-2*lc3$llik) + ((log((lc3$N + 2)/24)) * lc3$npar)
+results[4,5]<-(-2*lc4$llik) + ((log((lc4$N + 2)/24)) * lc4$npar)
+results[5,5]<-(-2*lc5$llik) + ((log((lc5$N + 2)/24)) * lc5$npar)
+results[6,5]<-(-2*lc6$llik) + ((log((lc6$N + 2)/24)) * lc6$npar)
+
+results[2,6]<- (-2*lc2$llik) + lc2$npar * (1 + log(lc2$N)) #caic
+results[3,6]<- (-2*lc3$llik) + lc3$npar * (1 + log(lc3$N))
+results[4,6]<- (-2*lc4$llik) + lc4$npar * (1 + log(lc4$N))
+results[5,6]<- (-2*lc5$llik) + lc5$npar * (1 + log(lc5$N))
+results[6,6]<- (-2*lc6$llik) + lc6$npar * (1 + log(lc6$N))
+
+results[2,7]<-lc2$Gsq
+results[3,7]<-lc3$Gsq
+results[4,7]<-lc4$Gsq
+results[5,7]<-lc5$Gsq
+results[6,7]<-lc6$Gsq
+
+results
+```
+Calculate Enthropy
+```{r}
+entropy<-function (p) sum(-p*log(p))
+
+results$R2_entropy
+results[1,8]<-c("-")
+
+error_prior<-entropy(lc2$P) # class proportions model 2
+error_post<-mean(apply(lc2$posterior,1, entropy),na.rm = TRUE)
+results[2,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc3$P) # class proportions model 3
+error_post<-mean(apply(lc3$posterior,1, entropy),na.rm = TRUE)
+results[3,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc4$P) # class proportions model 4
+error_post<-mean(apply(lc4$posterior,1, entropy),na.rm = TRUE)
+results[4,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc5$P) # class proportions model 5
+error_post<-mean(apply(lc5$posterior,1, entropy),na.rm = TRUE)
+results[5,8]<-round(((error_prior-error_post) / error_prior),3)
+
+error_prior<-entropy(lc6$P) # class proportions model 6
+error_post<-mean(apply(lc6$posterior,1, entropy),na.rm = TRUE)
+results[6,8]<-round(((error_prior-error_post) / error_prior),3)
+```
+
+combining results to a dataframe
+```{r}
+colnames(results)<-c("Model","log-likelihood","resid. df","BIC","aBIC","cAIC","likelihood-ratio","Entropy")
+lca_results<-results
+
+library(ztable)
+ztable::ztable(lca_results)
+```
+
+
+#-------------------Cluster Analysis-----------------
+
+```{r}
+library(tidyverse)  # data manipulation
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering visualization
+library(dendextend) # for comparing two dendrograms
+```
+
+
+```{r}
+dataClus <-read.delim("./Binary_ALlCodes_Clustering.txt", header = TRUE)
+```
+
+Dissimilarity matrix
+```{r}
+HC <- dist(dataClus[2:14], method = "euclidean")
+```
+
+Hierarchical clustering using wards method
+```{r}
+hc1 <- hclust(HC, method = "ward.D2" )
+```
+
+Plot the obtained dendrogram
+```{r}
+plot(hc1, cex = 0.6, hang = -1)
+```
+Plot the obtained dendrogram with Labels
+```{r}
+plot(hc1, cex = 0.6, labels = dataClus$Participant, hang = -1)
+```
+make subgroups
+```{r}
+plot(hc1, labels = dataClus$Participant, cex = 0.6)
+rect.hclust(hc1, k = 5, border = 2:5)
 ```
 
