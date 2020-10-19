@@ -480,7 +480,24 @@ Cluster 4: Curriculum Aspects
 Cluster 5: Institutional Support
 Cluster 6: Social and behavioural
 
-To idenitfy the most prominent dropout reasons based on the frequencies of dropout reasons
+
+Identify dropout reasons ordered from the least referenced to the most referenced in participants input
+
+```{r}
+dataDR1 <-read.table("./Allfreq.txt", header = TRUE)
+```
+
+
+```{r}
+dd <- dist(scale(dataDR1[2]), method = "euclidean")
+hc1 <- hclust(dd, method = "ward.D2")
+plot(hc1, labels = dataDR1$Code, cex = 0.6)
+rect.hclust(hc1, k = 6, border = 2:5)
+```
+
+
+
+To idenitfy the most prominent dropout reasons based on the frequencies of dropout
 
 ```{r}
 dataDR <-read.table("./FreqDR.txt", header = TRUE)
@@ -493,5 +510,4 @@ ggplot(dataDR, aes(x=Code, y=Fre, fill=Fre)) +
 geom_bar(stat="identity") +
 coord_flip()
 ```
-
 
