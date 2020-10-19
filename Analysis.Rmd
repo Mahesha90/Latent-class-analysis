@@ -480,4 +480,18 @@ Cluster 4: Curriculum Aspects
 Cluster 5: Institutional Support
 Cluster 6: Social and behavioural
 
+To idenitfy the most prominent dropout reasons based on the frequencies of dropout reasons
+
+```{r}
+dataDR <-read.table("./FreqDR.txt", header = TRUE)
+```
+
+
+
+```{r}
+ggplot(dataDR, aes(x=Code, y=Fre, fill=Fre)) +
+geom_bar(stat="identity") +
+coord_flip()
+```
+
 

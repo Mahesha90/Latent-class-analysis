@@ -1,0 +1,16 @@
+Code	Fre
+Less_Popular_Specialisations	2
+Boring_study_path	4
+Opportunity_to_Transfer	3
+Wrong_Speciality	6
+Extreme_Workload	1
+Family_issues	2
+Financial_Issues	2
+Health_Issues	1
+Psychological_social_Issues	4
+Hard_Curricular	6
+Learning_Difficulties	3
+Less_Support_from_Uni	1
+Employment	8
+Thesis	3
+Student_Supervisor_Relationship	1
