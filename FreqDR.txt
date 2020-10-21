@@ -1,4 +1,4 @@
-Code	Fre
+Code	Freq
 Less_Popular_Specialisations	2
 Boring_study_path	4
 Opportunity_to_Transfer	3

@@ -481,33 +481,46 @@ Cluster 5: Institutional Support
 Cluster 6: Social and behavioural
 
 
-Identify dropout reasons ordered from the least referenced to the most referenced in participants input
+--------------------------------------------------------------
+To idenitfy the most prominent codes based on the frequencies
 
+Here I have considered the all the codes derived from the content analysis (Dropouts as a major concern, Dropout reasons, Strategies Established/Suggested, Data)
 ```{r}
-dataDR1 <-read.table("./Allfreq.txt", header = TRUE)
+library(ggplot2)
+FreqAll <-read.table("./Allfreq.txt", header = TRUE)
+ggplot(FreqAll, aes(x=Code, y=Freq,  fill=Freq)) +
+geom_bar(stat="identity") +
+  coord_flip()
 ```
 
+ordered plot
+```{r}
+ggplot(FreqAll, aes(x=reorder(Code, Freq), y=Freq,  fill=Freq)) +
+geom_bar(stat="identity") +
+  coord_flip()
+```
 
 ```{r}
-dd <- dist(scale(dataDR1[2]), method = "euclidean")
+dd <- dist(scale(FreqAll[2]), method = "euclidean")
 hc1 <- hclust(dd, method = "ward.D2")
-plot(hc1, labels = dataDR1$Code, cex = 0.6)
+plot(hc1, labels = FreqAll$Code, cex = 0.6)
+rect.hclust(hc1, k = 7, border = 2:5)
+```
+
+Here I have considered the dropout reasons only
+
+```{r}
+FreqDR <-read.table("./FreqDR.txt", header = TRUE)
+ggplot(FreqDR, aes(x=Code, y=Freq,  fill=Freq)) +
+geom_bar(stat="identity") +
+  coord_flip()
+```
+
+```{r}
+dd <- dist(scale(FreqDR[2]), method = "euclidean")
+hc1 <- hclust(dd, method = "ward.D2")
+plot(hc1, labels = FreqDR$Code, cex = 0.6)
 rect.hclust(hc1, k = 6, border = 2:5)
 ```
 
-
-
-To idenitfy the most prominent dropout reasons based on the frequencies of dropout
-
-```{r}
-dataDR <-read.table("./FreqDR.txt", header = TRUE)
-```
-
-
-
-```{r}
-ggplot(dataDR, aes(x=Code, y=Fre, fill=Fre)) +
-geom_bar(stat="identity") +
-coord_flip()
-```
 
